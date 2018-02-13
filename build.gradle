@@ -8,11 +8,24 @@
 
 apply plugin:'java'
 apply plugin: 'application'
+apply plugin: 'war'
+apply from: 'https://raw.github.com/akhikhl/gretty/master/pluginScripts/gretty.plugin'
 
 dependencies {
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
+
+    // Spring
+    compile group: 'org.springframework', name: 'spring-core', version: '4.3.14.RELEASE'
+    compile group: 'org.springframework', name: 'spring-webmvc', version: '4.3.14.RELEASE'
+
+    // Tomcat - Container
+    compile group: 'org.apache.tomcat', name: 'tomcat-catalina', version: '8.5.27'
+
+    // Thymeleaf - View templates
+    compile group: 'org.thymeleaf', name: 'thymeleaf', version: '3.0.9.RELEASE'
+    compile group: 'org.thymeleaf', name: 'thymeleaf-spring4', version: '3.0.9.RELEASE'
 }
 
 // In this section you declare where to find the dependencies of your project
@@ -23,5 +36,8 @@ repositories {
 }
 
 run {
-    mainClassName = 'Main'
+    mainClassName = 'MainApp'
+}
+gretty {
+    httpPort = 8080
 }
