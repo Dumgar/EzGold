@@ -26,3 +26,4 @@ hs_err_pid*
 EzGold.iml
 gradlew
 gradlew.bat
+gradle/
